@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expanding Cards</title>
+    <style>
+        *{
+            box-sizing: border-box;
+
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container{
+            display: flex;
+            width: 90vh;
+            
+        }
+        .panel{
+            background-repeat:no-repeat;
+            border-style: groove;
+            border-radius: 15px;
+            height: 80vh;
+            background-size: cover;
+            cursor: pointer;
+            margin: 10px;
+            flex: 0.5;
+            -webkit-transition: all 500ms ease-in;
+        }
+        h3{
+            position: relative;
+            font-size: 30px;
+            left: 50%;
+            top: 80%;
+        }
+        .panel.active{
+            flex: 5;
+        }
+        .panel.active h3{/
+            opacity: 1;
+            transition: opacity 3s ease-in 4s;
+        }
+        @media (max-width: 480px) {
+             .container {
+             width:  100vw;
+  }}
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="panel active" style="background-image: url('1.jpg')"><h3>1</h3></div>
+    <div class="panel" style="background-image:url('2.jpg')" ><h3>2</h3></div>
+    <div class="panel" style="background-image:url('3.jpg')"><h3>3</h3></div>
+    <div class="panel" style="background-image:url('4.jpg')"><h3>4</h3></div>
+</div>
+<script>
+   const panels = document.querySelectorAll('.panel')
+
+panels.forEach(panel => {
+    panel.addEventListener('click', () => {
+        removeActiveClasses()
+        panel.classList.add('active')
+    })
+})
+
+function removeActiveClasses() {
+    panels.forEach(panel => {
+        panel.classList.remove('active')
+    })
+}
+    </script>
+</body>
+</html>
